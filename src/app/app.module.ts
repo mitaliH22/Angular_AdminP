@@ -25,6 +25,10 @@ import { EditCardComponent } from './edit-card/edit-card.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { DashLayoutComponent } from './dash-layout/dash-layout.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserComponent } from './user/user.component';
+import { SkillsComponent } from './skills/skills.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { FooterComponent } from './footer/footer.component';
     EditPageComponent,
     DashLayoutComponent,
     FooterComponent,
+    ProfileComponent,
+    UserComponent,
+    SkillsComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,

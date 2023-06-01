@@ -12,11 +12,12 @@ import { UpdateComponent } from './update/update.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashComponent } from './dash/dash.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dash', component: DashComponent },
+  { path: 'dash', component: DashComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'read', component: ReadComponent, canActivate: [AuthGuard] },
   { path: 'delete', component: DeleteComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'update', component: UpdateComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'edit', component: EditPageComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: PagenotfoundComponent },
 ];
 

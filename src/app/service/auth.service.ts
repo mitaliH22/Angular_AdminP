@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   items: any = users;
-
+  role: any;
   constructor(private router: Router) {}
 
   login(data: any) {
@@ -18,6 +18,7 @@ export class AuthService {
            this.router.navigate(['/home']);
            break;
          } else if (data.email == 'user@123' && data.password == 'user123') {
+           this.role = data.role;
            this.router.navigate(['/dash']);
            break;
          } else {
@@ -33,18 +34,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
-    if (
-      this.router.url === '/home' ||
-      this.router.url === '/create' ||
-      this.router.url === '/read' ||
-      this.router.url === '/delete' ||
-      this.router.url === '/update' ||
-      this.router.url === '/dash'
-    ) {
-      this.router.navigate(['/login']);
-    } else {
-      console.log('logged out');
-    }
+    this.router.navigate(['/login']);
   }
 
 }

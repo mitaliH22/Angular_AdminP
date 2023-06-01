@@ -5,6 +5,7 @@ export const users: any = [
     email: 'taylor@gmail.com',
     gender: 'Female',
     password: 'test123',
+    role: 'User'
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const users: any = [
     email: 'jill@gmail.com',
     gender: 'Female',
     password: 'test123',
+    role: 'User'
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const users: any = [
     email: 'jack@gmail.com',
     gender: 'Male',
     password: 'test123',
+    role: 'User'
   },
   {
     id: 4,
@@ -26,5 +29,6 @@ export const users: any = [
     email: 'john@gmail.com',
     gender: 'Male',
     password: 'test123',
+    role: 'User'
   },
 ];
