@@ -1,0 +1,53 @@
+<!-- <app-layout>
+    <div class="container">
+      <h1>Data</h1>
+      <table>
+        <tbody>
+        <tr>
+          <th></th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let item of data">
+          <td>
+            <input type="checkbox" id="" name="" value="">
+          </td>
+          <td>{{ item?.id }}</td>
+          <td>{{ item?.name }}</td>
+          <td>{{ item?.email }}</td>
+          <td>
+            <button (click)="delete(item?.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</app-layout> -->
+<app-layout>
+    <div class="container p-5">
+      <h1>Data</h1>
+      <table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+      <th scope="col">Gender</th>
+			<th scope="col">Email</th>
+      <th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of data; index as i">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>
+				{{ item.name }}
+			</td>
+      <td>{{ item.gender }}</td>
+			<td>{{ item.email }}</td>
+      <td><button (click)="delete(i)">Delete</button> </td>
+		</tr>
+	</tbody>
+</table>
+    </div>
+</app-layout>

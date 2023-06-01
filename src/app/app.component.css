@@ -1,0 +1,19 @@
+.main{
+  display: flex;
+}
+.main-left{
+  flex: 0.3;
+}
+.main-right{
+  padding-left: 30px;
+  flex: 2;
+}
+.name{
+  margin-bottom: 0;
+}
+.welcome-text{
+  margin: 0;
+}
+.container{
+  position: relative;
+}
