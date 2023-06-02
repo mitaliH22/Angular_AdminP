@@ -9,19 +9,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private service: AuthService, private router: Router) {}
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
+  loginForm: FormGroup;
+  emailFormControl: FormControl;
+  passwordFormControl: FormControl;
+  
+  constructor(private service: AuthService, private router: Router) {
+    this.emailFormControl = new FormControl('', [Validators.required]);
+    this.passwordFormControl = new FormControl('', [
       Validators.required,
       Validators.minLength(5),
-    ]),
-  });
+    ]);
 
-  login(data: any) {
-    this.service.login(data);
+    this.loginForm = new FormGroup({
+      email: this.emailFormControl,
+      password: this.passwordFormControl
+    });
   }
 
+  login() {
+    const e_mail = this.emailFormControl.value;
+    const pwd = this.passwordFormControl.value;
+
+    this.service.loginApi(e_mail,pwd).subscribe(
+      (response) => {
+        console.log(response);
+        this.router.navigate(['/home']);
+        localStorage.setItem('user', JSON.stringify(response));
+      },
+      (error) => {
+        console.log(error);
+        alert('Please Enter Correct Details!')
+      }
+    );
+  }
   register() {
     this.router.navigate(['/signup']);
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-dash',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dash.component.css']
 })
 export class DashComponent {
-constructor(){}
+  constructor(private authService: AuthService) { }
+
+  
 }

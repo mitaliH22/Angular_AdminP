@@ -1,6 +1,7 @@
 <div class="container py-3">
   <h1 class="text-center">The Network - Registration</h1>
-  <form [formGroup]="registerForm" (ngSubmit)="signup(registerForm.value)">
+  <!-- <form [formGroup]="registerForm" (ngSubmit)="signup(registerForm.value)"> -->
+  <form [formGroup]="registerForm" (ngSubmit)="createUser()">
     <div class="mb-3">
       <div class="d-flex justify-content-between">
         <label for="fname" class="form-label">First Name</label>
@@ -51,19 +52,10 @@
       />
     </div>
     <div class="mb-3">
-      <label for="gender" class="form-label">Gender</label>
-      <input
-        type="text"
-        class="form-control"
-        id="gender"
-        formControlName="gender"
-      />
-    </div>
-    <div class="mb-3">
       <div class="d-flex justify-content-between">
-        <label for="role" class="form-label">Role</label>
+        <label for="designation" class="form-label">Designation</label>
         <span
-          *ngIf="controlHasError(registerForm, 'required', 'role')"
+          *ngIf="controlHasError(registerForm, 'required', 'designation')"
           class="text-end text-danger fw-bolder"
           >This is invalid</span
         >
@@ -71,8 +63,8 @@
       <input
         type="text"
         class="form-control"
-        id="role"
-        formControlName="role"
+        id="designation"
+        formControlName="designation"
       />
     </div>
     <div class="mb-3">
