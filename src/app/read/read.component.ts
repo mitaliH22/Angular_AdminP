@@ -1,13 +1,6 @@
 import { Component, PipeTransform } from '@angular/core';
 import { OperationsService } from '../service/operations.service';
-
-type UserList = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  company: { department: string; title: string };
-};
+import { UserList } from '../types/types';
 
 @Component({
   selector: 'app-read',

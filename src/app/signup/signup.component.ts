@@ -40,24 +40,24 @@ export class SignupComponent {
   }
 
 
-  signup(data: any) {
-    console.log(data);
-    this.router.navigate(['/login']);
+  signup() {
+    const fname = this.fnameFormControl.value;
+    const lname = this.lnameFormControl.value;
+    const email = this.emailFormControl.value;
+    const phone = this.phoneFormControl.value;
+    const designation = this.designationFormControl.value;
+    const password = this.passwordFormControl.value;
+
+    this.operations.createOperation(fname, lname, email, phone, designation, password).subscribe((result) => {
+      // alert('User registered successfully!');
+      console.log(result);
+      // this.router.navigate(['/login']);
+    }, (error) => {
+      console.log(error);
+    })
   }
 
-  createUser() {
-    const user = {
-      fname: this.fnameFormControl.value,
-      lname: this.lnameFormControl.value,
-      email: this.emailFormControl.value,
-      phone: this.phoneFormControl.value,
-      designation: this.designationFormControl.value,
-      password: this.passwordFormControl.value,
-    };
 
-    this.operations.createOperation(user).subscribe(())
-    console.log(user);
-  }
   controlHasError(form: FormGroup, validation: string, controlName: string) {
     const control = form.controls[controlName];
     return control.hasError(validation) && (control.dirty || control.touched);

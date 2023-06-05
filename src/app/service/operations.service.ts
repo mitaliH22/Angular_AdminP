@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { users } from '../../assets/user';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,8 +11,7 @@ export class OperationsService {
   constructor(private http: HttpClient) {}
 
   deleteOperation(id: number) {
-    console.log('selected id', id, users);
-    users.splice(id, 1);
+    return this.http.delete(this.api_url + `/users/${id}`);
   }
 
   readOperation() {
@@ -29,8 +27,8 @@ export class OperationsService {
     password: String
   ) {
     const body = {
-      fName: firstName,
-      lName: lastName,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       phone: phone,
       designation: designation,

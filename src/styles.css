@@ -5,3 +5,8 @@
 a{
   text-decoration: none;
 }
+.custom-table{
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
