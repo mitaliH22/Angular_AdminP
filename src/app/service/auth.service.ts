@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { users } from '../../assets/user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Users } from '../types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -12,29 +13,11 @@ export class AuthService {
   /* Dummy Json Api call */
   api_url = 'https://dummyjson.com';
 
+  REST_API: string = 'http://localhost:3000/api';
+
   items: any = users;
   constructor(private router: Router, private http: HttpClient) {}
 
-  // login(data: any) {
-  //   if (data.email != '' && data.password != '') {
-  //     localStorage.setItem('user', JSON.stringify(data));
-  //     for (var val of this.items) {
-  //       if (val.email == data.email && val.password == data.password) {
-  //         this.router.navigate(['/home']);
-  //         break;
-  //       } else if (data.email == 'user@123' && data.password == 'user123') {
-  //         this.role = data.role;
-  //         this.router.navigate(['/dash']);
-  //         break;
-  //       } else {
-  //         alert('Please try again');
-  //         break;
-  //       }
-  //     }
-  //   } else {
-  //     alert('Please Enter Email and Password');
-  //   }
-  // }
 
   logout() {
     localStorage.removeItem('user');
@@ -43,9 +26,23 @@ export class AuthService {
 
   loginApi(email: string, password: any) {
     const body = {
-      username: email,
+      email: email,
       password: password,
     };
-    return this.http.post(this.api_url + '/auth/login', body);
+    return this.http.post(`${this.REST_API}/login`, body);
   }
+
+  // Signup
+  signupApi(data: any) {
+    const body = {
+      first_name: data.fname,
+      last_name:data.lname,
+      email:data.email,
+      phone:data.phone,
+      designation:data.designation,
+      password:data.password,
+    };
+    return this.http.post(`${this.REST_API}/register`, body)
+  }
+
 }

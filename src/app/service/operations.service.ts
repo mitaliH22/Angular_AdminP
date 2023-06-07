@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Users } from '../types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class OperationsService {
   /* Dummy Json Api call */
   api_url = 'https://dummyjson.com';
+
+  REST_API: string = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 
@@ -36,5 +39,13 @@ export class OperationsService {
     };
 
     return this.http.post(this.api_url + '/users/add', body);
+  }
+
+  GetUsers() {
+    return this.http.get(`${this.REST_API}/users`);
+  }
+
+  createUser(data: any) {
+    return this.http.post(`${this.REST_API}/add_user`,{headers: {'Content-Type': 'application/json'}},data);
   }
 }

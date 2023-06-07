@@ -12,7 +12,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   emailFormControl: FormControl;
   passwordFormControl: FormControl;
-  
+
   constructor(private service: AuthService, private router: Router) {
     this.emailFormControl = new FormControl('', [Validators.required]);
     this.passwordFormControl = new FormControl('', [
@@ -38,7 +38,6 @@ export class LoginComponent {
       },
       (error) => {
         console.log(error);
-        alert('Please Enter Correct Details!')
       }
     );
   }

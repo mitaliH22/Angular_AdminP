@@ -1,6 +1,6 @@
 import { Component, PipeTransform } from '@angular/core';
 import { OperationsService } from '../service/operations.service';
-import { UserList } from '../types/types';
+import { UserList, Users } from '../types/types';
 
 @Component({
   selector: 'app-read',
@@ -9,11 +9,18 @@ import { UserList } from '../types/types';
 })
 export class ReadComponent {
   userList: UserList[] | undefined;
+  users: Users[] | undefined;
+
   constructor(private user: OperationsService) {
     user.readOperation().subscribe((data: any) => {
       this.userList = data.users;
-      console.log(this.userList);
+
     });
+
+    user.GetUsers().subscribe((data: any) => {
+      this.users = data;
+      console.log(data);
+    })
   }
 }
 
