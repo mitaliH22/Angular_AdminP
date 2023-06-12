@@ -41,11 +41,27 @@ export class OperationsService {
     return this.http.post(this.api_url + '/users/add', body);
   }
 
+  // READ
   GetUsers() {
     return this.http.get(`${this.REST_API}/users`);
   }
 
+  // CREATE
   createUser(data: any) {
     return this.http.post(`${this.REST_API}/add_user`,{headers: {'Content-Type': 'application/json'}},data);
+  }
+
+  // UPDATE
+  updateUser(data: any) {
+    return this.http.put(
+      this.REST_API + `/delete/${data?.id}`,
+      { headers: { 'Content-Type': 'application/json' } },
+      data
+    );
+  }
+
+  // DELETE
+  deleteUser(id: any) {
+    return this.http.delete(this.REST_API + `/delete/${id}`);
   }
 }

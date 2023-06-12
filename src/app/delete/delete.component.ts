@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { OperationsService } from '../service/operations.service';
-import { UserList } from '../types/types';
+import { UserList, Users } from '../types/types';
 
 
 @Component({
@@ -11,18 +11,21 @@ import { UserList } from '../types/types';
 })
 
 export class DeleteComponent {
-  userList: UserList[] | undefined;
-  constructor(private operations: OperationsService) {
-    operations.readOperation().subscribe((data: any) => {
-      this.userList = data.users;
+    userList: UserList[] | undefined;
+    users: Users[] | undefined | any;
+
+    constructor(private user: OperationsService) {
+
+    user.GetUsers().subscribe((data: any) => {
+      this.users = data;
+    })
+    }
+
+  delete(id: any) {
+    this.user.deleteUser(id).subscribe((data: any) => {
+      console.log(this.users,data);
     });
   }
-
-  delete(index: number, id: number) {
-    console.log(index,id)
-    this.operations.deleteOperation(id).subscribe((data: any) => {
-      console.log(data);
-      this.userList?.splice(index, 1);
-    })
-  }
 }
+
+
